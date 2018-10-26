@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import mx.gob.seguropopulartlax.entidades.Vehiculos;
 import mx.gob.seguropopulartlax.servicio.VehiculoServicio;
+import mx.gob.seguropopulattlax.json.VehiculoJson;
 
 /**
  * REST Web Service
@@ -40,10 +41,9 @@ public class VehiculosResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllVehiculos() {
         try{
-            List<Vehiculos> vehiculos = new VehiculoServicio().getAll();
-            String json = new Gson().toJson(vehiculos);
+            String vehiculosToJson = VehiculoJson.getAllVehiculos();
             
-            return Response.ok(json, MediaType.APPLICATION_JSON).build();
+            return Response.ok(vehiculosToJson, MediaType.APPLICATION_JSON).build();
         } catch(Exception ex){
             return Response.status(Response.Status.SEE_OTHER).entity("Error: " + ex.toString()).build();
         }
@@ -56,8 +56,8 @@ public class VehiculosResource {
     public Response getVehiculo(@QueryParam("NO_ECONOMICO")String NO_ECONOMICO){
         try{
             Vehiculos vehiculos = new VehiculoServicio().getVehiculo(NO_ECONOMICO);
-            String json = new Gson().toJson(vehiculos);
-            return Response.ok(json, MediaType.APPLICATION_JSON).build();
+            String vehiculoToJson = VehiculoJson.getVehiculo(vehiculos);
+            return Response.ok(vehiculoToJson, MediaType.APPLICATION_JSON).build();
         } catch(Exception ex){
             return Response.status(Response.Status.SEE_OTHER).entity("Error: " + ex.toString()).build();
         }
@@ -79,14 +79,14 @@ public class VehiculosResource {
             vehiculoServicio.createVehiculo(NO_ECONOMICO, MARCA, TIPO, MODELO, CAPACIDAD_TANQUE, 
                     IMAGEN, TIPO_COMBUSTIBLE, NO_SERIE, NO_MOTOR, PLACAS, AREA_RESGUARDANTE, RESGUARDANTE, 
                     DISPONIBILIDAD, IMAGEN);
-            String json = "Agregado correctamente";
+            String json = "agregado";
             
             return Response.ok(json, MediaType.APPLICATION_JSON).build();
         } catch(Exception ex){
             return Response.status(Response.Status.SEE_OTHER).entity("Error: " + ex.toString()).build();
         }
     }
-
+    
     @PUT
     @Path("update")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -96,7 +96,7 @@ public class VehiculosResource {
         try{
             VehiculoServicio vehiculoServicio = new VehiculoServicio();
             vehiculoServicio.updateVehiculo(DISPONIBILIDAD, NO_ECONOMICO);
-            String json = "Actualizado correctamente";
+            String json = "actualizado";
             return Response.ok(json, MediaType.APPLICATION_JSON).build();
         } catch(Exception ex){
             return Response.status(Response.Status.SEE_OTHER).entity("Error: " + ex.toString()).build();
@@ -111,7 +111,7 @@ public class VehiculosResource {
         try{
             VehiculoServicio vehiculoServicio = new VehiculoServicio();
             vehiculoServicio.delete(NO_ECONOMICO);
-            String json = "Eliminado correctamente";
+            String json = "eliminado";
             return Response.ok(json, MediaType.APPLICATION_JSON).build();
         }catch(Exception ex){
             return Response.status(Response.Status.SEE_OTHER).entity("Error: " + ex.toString()).build();
