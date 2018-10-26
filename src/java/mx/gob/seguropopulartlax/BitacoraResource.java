@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import mx.gob.seguropopulartlax.entidades.Bitacora;
 import mx.gob.seguropopulartlax.servicio.BitacoraServicio;
+import mx.gob.seguropopulattlax.json.BitacoraJson;
 
 /**
  * REST Web Service
@@ -39,9 +40,8 @@ public class BitacoraResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllBitacora(){
         try{
-            List<Bitacora> bitacoras = new BitacoraServicio().getAll();
-            String json = new Gson().toJson(bitacoras);
-            return Response.ok(json, MediaType.APPLICATION_JSON).build();
+            String bitacoraToJson = BitacoraJson.getAllBitacora();
+            return Response.ok(bitacoraToJson, MediaType.APPLICATION_JSON).build();
             
         } catch(Exception ex){
             return Response.status(Response.Status.SEE_OTHER).entity("Error: " + ex.toString()).build();
@@ -54,9 +54,8 @@ public class BitacoraResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBitacoraByFecha(@QueryParam("NO_ECONOMICO")String NO_ECONOMICO, @QueryParam("FECHA_INICIAL")Date FECHA_INICIAL, @QueryParam("FECHA_FINAL")Date FECHA_FINAL){
         try{
-            List<Bitacora> bitacoras = new BitacoraServicio().getBitacorabyFecha(NO_ECONOMICO, FECHA_INICIAL, FECHA_FINAL);
-            String json = new Gson().toJson(bitacoras);
-            return Response.ok(json, MediaType.APPLICATION_JSON).build();
+            String bitacoraToJsonByFecha = BitacoraJson.getAllBitacoraByFecha(NO_ECONOMICO, FECHA_INICIAL, FECHA_FINAL);
+            return Response.ok(bitacoraToJsonByFecha, MediaType.APPLICATION_JSON).build();
         }catch(Exception ex){
             return Response.status(Response.Status.SEE_OTHER).entity("Error: " + ex.toString()).build();
         }
