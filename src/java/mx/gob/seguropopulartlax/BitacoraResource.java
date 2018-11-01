@@ -2,7 +2,6 @@ package mx.gob.seguropopulartlax;
 
 import com.google.gson.Gson;
 import java.sql.Date;
-import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -13,7 +12,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import mx.gob.seguropopulartlax.entidades.Bitacora;
 import mx.gob.seguropopulartlax.servicio.BitacoraServicio;
 import mx.gob.seguropopulattlax.json.BitacoraJson;
 
