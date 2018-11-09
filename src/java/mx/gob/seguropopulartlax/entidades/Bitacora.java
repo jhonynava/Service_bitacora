@@ -9,9 +9,9 @@ public class Bitacora {
     private float kilometraje_inicial;
     private float kilometraje_final;
     private float importe;
-    private float tanque_inicial;
+    private String tanque_inicial;
     private float suministro;
-    private float tanque_final;
+    private String tanque_final;
     private float diferencia;
     private String recorrido;
     private String nombre_usuario;
@@ -23,7 +23,7 @@ public class Bitacora {
     public Bitacora() {
     }
 
-    public Bitacora(int id_bitacora, Date fecha, float kilometraje_inicial, float kilometraje_final, float importe, float tanque_inicial, float suministro, float tanque_final, float diferencia, String recorrido, String nombre_usuario, int firma, String observaciones, String no_economico, String curp) {
+    public Bitacora(int id_bitacora, Date fecha, float kilometraje_inicial, float kilometraje_final, float importe, String tanque_inicial, float suministro, String tanque_final, float diferencia, String recorrido, String nombre_usuario, int firma, String observaciones, String no_economico, String curp) {
         this.id_bitacora = id_bitacora;
         this.fecha = fecha;
         this.kilometraje_inicial = kilometraje_inicial;
@@ -81,11 +81,11 @@ public class Bitacora {
         this.importe = importe;
     }
 
-    public float getTanque_inicial() {
+    public String getTanque_inicial() {
         return tanque_inicial;
     }
 
-    public void setTanque_inicial(float tanque_inicial) {
+    public void setTanque_inicial(String tanque_inicial) {
         this.tanque_inicial = tanque_inicial;
     }
 
@@ -97,11 +97,11 @@ public class Bitacora {
         this.suministro = suministro;
     }
 
-    public float getTanque_final() {
+    public String getTanque_final() {
         return tanque_final;
     }
 
-    public void setTanque_final(float tanque_final) {
+    public void setTanque_final(String tanque_final) {
         this.tanque_final = tanque_final;
     }
 
@@ -160,6 +160,6 @@ public class Bitacora {
     public void setCurp(String curp) {
         this.curp = curp;
     }
-    
+
     
 }   

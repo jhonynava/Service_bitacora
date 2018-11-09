@@ -1,6 +1,5 @@
 package mx.gob.seguropopulartlax;
 
-import com.google.gson.Gson;
 import java.sql.Date;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -65,8 +64,8 @@ public class BitacoraResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addBitacora(@QueryParam("ID_BITACORA")String ID_BITACORA, @QueryParam("FECHA") Date FECHA, @QueryParam("KILOMETRAJE_INICIAL")Float KILOMETRAJE_INICIAL, 
             @QueryParam("KILOMETRAJE_FINAL")Float KILOMETRAJE_FINAL, @QueryParam("IMPORTE")Float IMPORTE, 
-            @QueryParam("TANQUE_INICIAL")Float TANQUE_INICIAL, @QueryParam("SUMINISTRO")Float SUMINISTRO, 
-            @QueryParam("TANQUE_FINAL")Float TANQUE_FINAL, @QueryParam("DIFERENCIA")Float DIFERENCIA,@QueryParam("RECORRIDO") String RECORRIDO, 
+            @QueryParam("TANQUE_INICIAL")String TANQUE_INICIAL, @QueryParam("SUMINISTRO")Float SUMINISTRO, 
+            @QueryParam("TANQUE_FINAL")String TANQUE_FINAL, @QueryParam("DIFERENCIA")Float DIFERENCIA,@QueryParam("RECORRIDO") String RECORRIDO, 
             @QueryParam("NOMBRE_USUARIO")String NOMBRE_USUARIO, @QueryParam("FIRMA") int FIRMA, @QueryParam("OBSERVACIONES")String OBSERVACIONES, 
             @QueryParam("NO_ECONOMICO")String NO_ECONOMICO, @QueryParam("CURP")String CURP){
         try{

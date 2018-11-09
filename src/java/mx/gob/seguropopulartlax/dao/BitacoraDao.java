@@ -25,8 +25,8 @@ public class BitacoraDao {
                     while(rs.next()){
                         bitacora = new Bitacora(rs.getInt("ID_BITACORA"),rs.getDate("FECHA"), 
                                 rs.getFloat("KILOMETRAJE_INICIAL"), rs.getFloat("KILOMETRAJE_FINAL"), 
-                                rs.getFloat("IMPORTE"), rs.getFloat("TANQUE_INICIAL"),
-                                rs.getFloat("SUMINISTRO"), rs.getFloat("TANQUE_FINAL"),
+                                rs.getFloat("IMPORTE"), rs.getString("TANQUE_INICIAL"),
+                                rs.getFloat("SUMINISTRO"), rs.getString("TANQUE_FINAL"),
                                 rs.getFloat("DIFERENCIA"), rs.getString("RECORRIDO"), 
                                 rs.getString("NOMBRE_USUARIO"), rs.getInt("FIRMA"), 
                                 rs.getString("OBSERVACIONES"), rs.getString("NO_ECONOMICO"), 
@@ -60,8 +60,8 @@ public class BitacoraDao {
                 while(rs.next()){
                     bitacora = new Bitacora(rs.getInt("ID_BITACORA"),rs.getDate("FECHA"), 
                         rs.getFloat("KILOMETRAJE_INICIAL"), rs.getFloat("KILOMETRAJE_FINAL"), 
-                        rs.getFloat("IMPORTE"), rs.getFloat("TANQUE_INICIAL"),
-                        rs.getFloat("SUMINISTRO"), rs.getFloat("TANQUE_FINAL"),
+                        rs.getFloat("IMPORTE"), rs.getString("TANQUE_INICIAL"),
+                        rs.getFloat("SUMINISTRO"), rs.getString("TANQUE_FINAL"),
                         rs.getFloat("DIFERENCIA"), rs.getString("RECORRIDO"), 
                         rs.getString("NOMBRE_USUARIO"), rs.getInt("FIRMA"), 
                         rs.getString("OBSERVACIONES"), rs.getString("NO_ECONOMICO"), 
@@ -77,7 +77,7 @@ public class BitacoraDao {
     }
     
     public void addBitacora(String ID_BITACORA, Date FECHA, Float KILOMETRAJE_INICIAL, Float KILOMETRAJE_FINAL,
-            Float IMPORTE, Float TANQUE_INICIAL, Float SUMINISTRO, Float TANQUE_FINAL, Float DIFERENCIA, 
+            Float IMPORTE, String TANQUE_INICIAL, Float SUMINISTRO, String TANQUE_FINAL, Float DIFERENCIA, 
             String RECORRIDO, String NOMBRE_USUARIO, int FIRMA, String OBSERVACIONES, String NO_ECONOMICO, String CURP){
         try{
             try(Connection connection = Dao.conexionBD()){
@@ -89,9 +89,9 @@ public class BitacoraDao {
                     ps.setFloat(2, KILOMETRAJE_INICIAL);
                     ps.setFloat(3, KILOMETRAJE_FINAL);
                     ps.setFloat(4, IMPORTE);
-                    ps.setFloat(5, TANQUE_INICIAL);
+                    ps.setString(5, TANQUE_INICIAL.replace("-", "/"));
                     ps.setFloat(6, SUMINISTRO);
-                    ps.setFloat(7, TANQUE_FINAL);
+                    ps.setString(7, TANQUE_FINAL.replace("-", "/"));
                     ps.setFloat(8, DIFERENCIA);
                     ps.setString(9, RECORRIDO);
                     ps.setString(10, NOMBRE_USUARIO);

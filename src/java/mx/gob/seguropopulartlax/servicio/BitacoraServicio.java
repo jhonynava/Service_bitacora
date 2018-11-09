@@ -22,7 +22,7 @@ public class BitacoraServicio {
     }
     
     public void create(String ID_BITACORA, Date FECHA, Float KILOMETRAJE_INICIAL, Float KILOMETRAJE_FINAL,
-            Float IMPORTE, Float TANQUE_INICIAL, Float SUMINISTRO, Float TANQUE_FINAL, Float DIFERENCIA, 
+            Float IMPORTE, String TANQUE_INICIAL, Float SUMINISTRO, String TANQUE_FINAL, Float DIFERENCIA, 
             String RECORRIDO, String NOMBRE_USUARIO, int FIRMA, String OBSERVACIONES, String NO_ECONOMICO, String CURP){
         
         bitacoraDao.addBitacora(ID_BITACORA, FECHA, KILOMETRAJE_INICIAL, KILOMETRAJE_FINAL, IMPORTE, TANQUE_INICIAL, 
